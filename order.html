@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing & Order | Lzora</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Top Ribbon -->
+  <div class="bg-[#2B2625] text-[#FAF8F5] text-xs py-2 text-center font-medium tracking-wider">
+    📦 SECURE BILLING & DIRECT WHATSAPP / UPI CHECKOUT
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8DED8]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <div class="relative flex items-center justify-center">
+          <img src="https://lh3.googleusercontent.com/d/1WKgUZjVsBKatADxZIuYxSaq0j5p8D_0X" 
+               alt="Lzora Logo" 
+               class="brand-logo-img transition-transform group-hover:scale-105 duration-300"
+               onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1WKgUZjVsBKatADxZIuYxSaq0j5p8D_0X&sz=w200';">
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl sm:text-3xl font-bold font-serif-luxury text-[#A05C6B] tracking-tight leading-none">Lzora.</span>
+          <span class="text-[9px] tracking-[0.25em] text-[#6B6260] uppercase font-semibold">Jewellery & Gifting</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-[#6B6260]">
+        <a href="index.html" class="hover:text-[#A05C6B]">Home</a>
+        <a href="jewellery.html" class="hover:text-[#A05C6B]">Jewellery Collections</a>
+        <a href="order.html" class="text-[#A05C6B] font-semibold border-b-2 border-[#A05C6B] pb-1">Billing & Order</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <a href="order.html" class="relative p-2.5 rounded-full bg-white border border-[#E8DED8] text-[#2B2625] hover:border-[#A05C6B] transition shadow-sm">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span class="cart-counter-badge absolute -top-1.5 -right-1.5 bg-[#A05C6B] text-white text-[10px] font-bold w-5 h-5 rounded-full hidden items-center justify-center border-2 border-white">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Billing & Order Layout -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+    <div class="mb-8">
+      <h1 class="text-3xl font-serif-luxury font-bold text-[#2B2625]">Billing & Order Confirmation</h1>
+      <p class="text-xs sm:text-sm text-[#6B6260]">Review your selected jewellery items, fill in customer shipping details and generate an instant order invoice.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Left Column: Shipping & Billing Form (7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-[#E8DED8] shadow-sm">
+          <h2 class="text-lg font-serif-luxury font-bold text-[#2B2625] mb-4 flex items-center space-x-2">
+            <i data-lucide="map-pin" class="w-5 h-5 text-[#A05C6B]"></i>
+            <span>1. Customer & Delivery Address</span>
+          </h2>
+          <form id="order-form" class="space-y-4" onsubmit="event.preventDefault(); processFinalOrder();">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-semibold text-gray-700 block mb-1">Full Name *</label>
+                <input type="text" id="cust-name" required placeholder="e.g. Priya Sharma" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#A05C6B] focus:outline-none">
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-700 block mb-1">WhatsApp / Phone Number *</label>
+                <input type="tel" id="cust-phone" required placeholder="e.g. 9876543210" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#A05C6B] focus:outline-none">
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs font-semibold text-gray-700 block mb-1">Complete Delivery Address (House/Street/Landmark) *</label>
+              <textarea id="cust-address" required rows="2" placeholder="e.g. Flat 302, Green Heights, Park Street" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#A05C6B] focus:outline-none"></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="text-xs font-semibold text-gray-700 block mb-1">City *</label>
+                <input type="text" id="cust-city" required placeholder="e.g. Kolkata" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#A05C6B] focus:outline-none">
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-700 block mb-1">Pincode *</label>
+                <input type="text" id="cust-pin" required placeholder="e.g. 700016" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#A05C6B] focus:outline-none">
+              </div>
+              <div class="col-span-2 sm:col-span-1">
+                <label class="text-xs font-semibold text-gray-700 block mb-1">Occasion / Note</label>
+                <input type="text" id="cust-note" placeholder="e.g. Birthday Card Note" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#A05C6B] focus:outline-none">
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-gray-100">
+              <label class="text-xs font-semibold text-gray-700 block mb-2">Select Payment Method</label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="flex items-center space-x-2 p-3 border border-[#A05C6B] bg-[#FDE8ED]/50 rounded-xl cursor-pointer">
+                  <input type="radio" name="payment_method" value="WhatsApp / UPI Direct" checked class="accent-[#A05C6B]">
+                  <span class="text-xs font-semibold text-gray-800">UPI / QR Code / WhatsApp</span>
+                </label>
+                <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50">
+                  <input type="radio" name="payment_method" value="Cash On Delivery" class="accent-[#A05C6B]">
+                  <span class="text-xs font-semibold text-gray-800">Cash on Delivery (+₹40)</span>
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Download Strategy Docs Feature (Bonus interactive tool) -->
+        <div class="bg-[#F3EEEA] p-6 rounded-3xl border border-[#E8DED8]">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-sm font-bold text-[#2B2625]">Download Store Strategic Blueprint</h3>
+              <p class="text-xs text-gray-600 mt-0.5">Offline pricing models, BOM wholesale rates and packaging guide.</p>
+            </div>
+            <button onclick="downloadOfflineDoc()" class="px-3 py-1.5 bg-[#A05C6B] text-white text-xs font-medium rounded-lg hover:bg-[#844855] transition flex items-center space-x-1">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Save .DOC</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Order Review & Billing Total (5 cols) -->
+      <div class="lg:col-span-5">
+        <div class="bg-white p-6 rounded-3xl border border-[#E8DED8] shadow-sm sticky top-28">
+          <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+            <h2 class="text-lg font-serif-luxury font-bold text-[#2B2625]">2. Order Summary</h2>
+            <a href="jewellery.html" class="text-xs font-semibold text-[#A05C6B] hover:underline">+ Add More Items</a>
+          </div>
+
+          <!-- Items list container -->
+          <div id="cart-review-list" class="py-4 divide-y divide-gray-100 max-h-72 overflow-y-auto space-y-3">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Calculations -->
+          <div class="pt-4 border-t border-gray-100 space-y-2 text-xs">
+            <div class="flex justify-between text-gray-600">
+              <span>Items Subtotal</span>
+              <span id="bill-subtotal" class="font-medium text-gray-800">₹0</span>
+            </div>
+            <div class="flex justify-between text-gray-600">
+              <span>Gift Box Packaging & Ribbon</span>
+              <span class="text-emerald-600 font-semibold">FREE (Special Offer)</span>
+            </div>
+            <div class="flex justify-between text-gray-600">
+              <span>Standard Shipping (India)</span>
+              <span id="bill-shipping" class="font-medium text-gray-800">₹49</span>
+            </div>
+            <div class="pt-3 border-t border-gray-200 flex justify-between items-baseline">
+              <span class="text-sm font-bold text-gray-900">Total Payable</span>
+              <span id="bill-total" class="text-2xl font-bold font-serif-luxury text-[#A05C6B]">₹0</span>
+            </div>
+          </div>
+
+          <!-- Submit Action -->
+          <button type="button" onclick="processFinalOrder()" class="w-full mt-6 py-3.5 bg-[#25D366] hover:bg-[#1EBE5D] text-white rounded-2xl font-semibold text-sm shadow-md transition flex items-center justify-center space-x-2">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Confirm Order on WhatsApp</span>
+          </button>
+          <p class="text-[10px] text-center text-gray-400 mt-2">Instant order dispatch note sent automatically with tracking updates.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-[#E8DED8] py-8 text-center text-xs text-[#6B6260]">
+    <p>© 2026 Lzora Billing & Orders. All transactions encrypted and verified.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    function renderOrderReview() {
+      const cart = getCart();
+      const list = document.getElementById('cart-review-list');
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div class="text-center py-8">
+            <p class="text-xs text-gray-400 mb-3">Your gift box bag is empty.</p>
+            <a href="jewellery.html" class="px-4 py-2 bg-[#A05C6B] text-white text-xs font-semibold rounded-lg">Explore Jewellery Items</a>
+          </div>
+        `;
+        document.getElementById('bill-subtotal').innerText = '₹0';
+        document.getElementById('bill-shipping').innerText = '₹0';
+        document.getElementById('bill-total').innerText = '₹0';
+        return;
+      }
+
+      let subtotal = 0;
+      list.innerHTML = cart.map(item => {
+        const lineTotal = item.price * item.qty;
+        subtotal += lineTotal;
+        return `
+          <div class="pt-2 flex justify-between items-center text-xs">
+            <div class="pr-2">
+              <p class="font-bold text-gray-800">${item.name}</p>
+              <p class="text-[10px] text-gray-500">${item.desc ? item.desc.substring(0, 45) + '...' : ''}</p>
+              <div class="flex items-center space-x-2 mt-1">
+                <button onclick="updateCartQty('${item.id}', -1)" class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center font-bold text-gray-600 hover:bg-gray-200">-</button>
+                <span class="font-semibold">${item.qty}</span>
+                <button onclick="updateCartQty('${item.id}', 1)" class="w-5 h-5 rounded bg-gray-100 flex items-center justify-center font-bold text-gray-600 hover:bg-gray-200">+</button>
+                <span class="text-gray-400">× ₹${item.price}</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="font-bold text-gray-800">₹${lineTotal}</span>
+              <button onclick="removeFromCart('${item.id}')" class="block text-[10px] text-red-500 hover:underline mt-1 ml-auto">Remove</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const shipping = subtotal >= 499 || subtotal === 0 ? 0 : 49;
+      const total = subtotal + shipping;
+
+      document.getElementById('bill-subtotal').innerText = `₹${subtotal}`;
+      document.getElementById('bill-shipping').innerText = shipping === 0 ? 'FREE' : `₹${shipping}`;
+      document.getElementById('bill-total').innerText = `₹${total}`;
+    }
+
+    function processFinalOrder() {
+      const cart = getCart();
+      if (cart.length === 0) {
+        alert('Your bag is empty! Please add some jewellery or hampers first.');
+        window.location.href = 'jewellery.html';
+        return;
+      }
+
+      const name = document.getElementById('cust-name').value.trim();
+      const phone = document.getElementById('cust-phone').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+      const city = document.getElementById('cust-city').value.trim();
+      const pin = document.getElementById('cust-pin').value.trim();
+      const note = document.getElementById('cust-note').value.trim();
+      const payment = document.querySelector('input[name="payment_method"]:checked').value;
+
+      if (!name || !phone || !address || !city || !pin) {
+        alert('Please fill out all required shipping fields (*).');
+        return;
+      }
+
+      let subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+      let shipping = subtotal >= 499 ? 0 : 49;
+      let grandTotal = subtotal + shipping;
+
+      let msg = `✨ *NEW BAUBLEBOX ORDER* ✨%0A`;
+      msg += `-----------------------------------%0A`;
+      msg += `👤 *Customer:* ${name}%0A`;
+      msg += `📞 *Phone:* ${phone}%0A`;
+      msg += `📍 *Delivery Address:* ${address}, ${city} - ${pin}%0A`;
+      if (note) msg += `💌 *Gift Note:* ${note}%0A`;
+      msg += `💳 *Payment Method:* ${payment}%0A%0A`;
+      msg += `📦 *ORDER ITEMS:*%0A`;
+
+      cart.forEach((c, idx) => {
+        msg += `${idx + 1}. ${c.name} (Qty: ${c.qty}) - ₹${c.price * c.qty}%0A`;
+      });
+
+      msg += `-----------------------------------%0A`;
+      msg += `Subtotal: ₹${subtotal}%0A`;
+      msg += `Shipping: ${shipping === 0 ? 'FREE' : '₹' + shipping}%0A`;
+      msg += `*Grand Total: ₹${grandTotal}*%0A%0A`;
+      msg += `Please share UPI QR / Payment confirmation!`;
+
+      // Redirect to WhatsApp with order summary
+      window.open(`https://wa.me/919051185624?text=${msg}`, '_blank');
+    }
+
+    function downloadOfflineDoc() {
+      const content = `BAUBLEBOX JEWELLERY & GIFTING MASTER STRATEGY
+============================================================
+Business Model: Curated Jewellery Gift Boxes
+Target Price Points: ₹199, ₹299, ₹399, ₹499, ₹699
+
+1. SECTIONS IN STORE:
+- Section 1: Earrings & Jhumkas (Afghan, German Silver, Korean Huggies)
+- Section 2: Pendants & Chains (Anti-tarnish waterproof snake chains, Opal lockets)
+- Section 3: Accessories (Resin claw clips, satin scrunchies, adjustable cuffs, anklets)
+- Section 4: Billing & Direct WhatsApp Checkout
+
+2. SOURCING HUBS:
+- Sadar Bazar & Rui Mandi (Delhi)
+- Burrabazar (Kolkata)
+- Crawford Market (Mumbai)
+`;
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Lzora_Jewellery_Business_Plan.doc';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderOrderReview();
+    });
+  </script>
+</body>
+</html>

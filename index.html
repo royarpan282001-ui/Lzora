@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lzora | Aesthetic Jewellery & Curated Gift Hampers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Top Ribbon -->
+  <div class="bg-[#2B2625] text-[#FAF8F5] text-xs py-2 text-center font-medium tracking-wider">
+    🌸 CELEBRATE AFFORDABLE LUXURY • FREE GIFT BOX & CARD ON ALL ORDERS ABOVE ₹499 🌸
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8DED8]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <div class="relative flex items-center justify-center">
+          <img src="https://lh3.googleusercontent.com/d/1WKgUZjVsBKatADxZIuYxSaq0j5p8D_0X" 
+               alt="Lzora Logo" 
+               class="brand-logo-img transition-transform group-hover:scale-105 duration-300"
+               onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1WKgUZjVsBKatADxZIuYxSaq0j5p8D_0X&sz=w200';">
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl sm:text-3xl font-bold font-serif-luxury text-[#A05C6B] tracking-tight leading-none">Lzora.</span>
+          <span class="text-[9px] tracking-[0.25em] text-[#6B6260] uppercase font-semibold">Jewellery & Gifting</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-[#6B6260]">
+        <a href="index.html" class="text-[#A05C6B] font-semibold">Home</a>
+        <div class="relative group">
+          <a href="jewellery.html" class="hover:text-[#A05C6B] flex items-center space-x-1 py-2">
+            <span>Jewellery Collections</span>
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </a>
+          <!-- Dropdown Sub-menu -->
+          <div class="absolute left-0 top-full hidden group-hover:block w-48 bg-white border border-[#E8DED8] rounded-2xl shadow-xl py-2 z-50">
+            <a href="jewellery.html?cat=earrings" class="block px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FDE8ED] hover:text-[#A05C6B] font-medium">✨ 1. Earrings & Jhumkas</a>
+            <a href="jewellery.html?cat=pendants" class="block px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FDE8ED] hover:text-[#A05C6B] font-medium">✨ 2. Pendants & Chains</a>
+            <a href="jewellery.html?cat=accessories" class="block px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FDE8ED] hover:text-[#A05C6B] font-medium">✨ 3. Cute Accessories</a>
+            <div class="border-t border-gray-100 my-1"></div>
+            <a href="jewellery.html" class="block px-4 py-2 text-xs font-bold text-[#A05C6B]">View All Jewellery →</a>
+          </div>
+        </div>
+        <a href="order.html" class="hover:text-[#A05C6B]">Billing & Order</a>
+      </nav>
+
+      <!-- Right Action & Cart -->
+      <div class="flex items-center space-x-4">
+        <a href="order.html" class="relative p-2.5 rounded-full bg-white border border-[#E8DED8] text-[#2B2625] hover:border-[#A05C6B] transition shadow-sm">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span class="cart-counter-badge absolute -top-1.5 -right-1.5 bg-[#A05C6B] text-white text-[10px] font-bold w-5 h-5 rounded-full hidden items-center justify-center border-2 border-white">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-[#FAF8F5] via-[#F8EFE9] to-[#FAF8F5]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="badge-tag mb-4">Cute • Trendy • Affordable Hampers</span>
+        <h1 class="text-4xl sm:text-6xl font-serif-luxury font-bold text-[#2B2625] leading-tight mb-6">
+          Aesthetic jewellery gifts that look like a <span class="italic text-[#A05C6B]">million bucks.</span>
+        </h1>
+        <p class="text-[#6B6260] text-base sm:text-lg mb-8 max-w-lg">
+          No more boring generic gifting. Unbox curated sets of anti-tarnish chains, oxidised jhumkas, and cute Korean accessories in premium keepsake boxes starting at just ₹199.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="jewellery.html" class="px-8 py-4 bg-[#A05C6B] hover:bg-[#844855] text-white font-medium text-sm rounded-full shadow-lg transition">
+            Shop By Categories
+          </a>
+          <a href="order.html" class="px-8 py-4 bg-white hover:bg-gray-50 border border-[#E8DED8] text-[#2B2625] font-medium text-sm rounded-full shadow-sm transition flex items-center space-x-2">
+            <span>View Cart & Order</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="w-full h-[420px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1000&q=80" alt="Jewellery Gift Box" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-[#E8DED8] max-w-xs">
+          <div class="flex items-center space-x-3 mb-2">
+            <span class="w-8 h-8 rounded-full bg-[#FDE8ED] text-[#A05C6B] flex items-center justify-center font-bold text-sm">🎁</span>
+            <div>
+              <p class="text-xs font-bold text-[#2B2625]">Ready Gift Sets</p>
+              <p class="text-[11px] text-gray-500">Curated with love & ribbon seals</p>
+            </div>
+          </div>
+          <p class="text-xs font-semibold text-[#A05C6B]">Combos start at just ₹299</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Explorer Cards -->
+  <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-3xl font-serif-luxury font-bold text-[#2B2625]">Explore The Jewellery Studio</h2>
+      <p class="text-sm text-[#6B6260] mt-2">Pick your favorite individual pieces or bundle them into gift boxes.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- 1. Earrings -->
+      <div class="group bg-white rounded-3xl p-6 border border-[#E8DED8] hover:border-[#A05C6B] transition shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="h-56 rounded-2xl overflow-hidden mb-5 bg-[#F3EEEA]">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Earrings">
+          </div>
+          <span class="badge-tag">Section 1</span>
+          <h3 class="text-xl font-serif-luxury font-bold text-[#2B2625] mt-2">Earrings & Jhumkas</h3>
+          <p class="text-xs text-[#6B6260] mt-1">German silver oxidised drops, Korean huggie hoops, enamel floral studs & daily chic rings.</p>
+        </div>
+        <a href="jewellery.html?cat=earrings" class="mt-6 inline-flex items-center text-xs font-bold text-[#A05C6B] hover:text-[#844855]">
+          Browse Earrings (4 Items) →
+        </a>
+      </div>
+
+      <!-- 2. Pendants -->
+      <div class="group bg-white rounded-3xl p-6 border border-[#E8DED8] hover:border-[#A05C6B] transition shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="h-56 rounded-2xl overflow-hidden mb-5 bg-[#F3EEEA]">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Pendants">
+          </div>
+          <span class="badge-tag">Section 2</span>
+          <h3 class="text-xl font-serif-luxury font-bold text-[#2B2625] mt-2">Pendants & Chains</h3>
+          <p class="text-xs text-[#6B6260] mt-1">Anti-tarnish waterproof snake chains, celestial opal charms, and Roman coin layered necklaces.</p>
+        </div>
+        <a href="jewellery.html?cat=pendants" class="mt-6 inline-flex items-center text-xs font-bold text-[#A05C6B] hover:text-[#844855]">
+          Browse Pendants (4 Items) →
+        </a>
+      </div>
+
+      <!-- 3. Accessories -->
+      <div class="group bg-white rounded-3xl p-6 border border-[#E8DED8] hover:border-[#A05C6B] transition shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="h-56 rounded-2xl overflow-hidden mb-5 bg-[#F3EEEA]">
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Accessories">
+          </div>
+          <span class="badge-tag">Section 3</span>
+          <h3 class="text-xl font-serif-luxury font-bold text-[#2B2625] mt-2">Cute Accessories</h3>
+          <p class="text-xs text-[#6B6260] mt-1">Korean matte claw clips, silk scrunchies, adjustable wrist cuffs & evil-eye anklets.</p>
+        </div>
+        <a href="jewellery.html?cat=accessories" class="mt-6 inline-flex items-center text-xs font-bold text-[#A05C6B] hover:text-[#844855]">
+          Browse Accessories (4 Items) →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Box Builder Teaser Banner -->
+  <section class="py-12 bg-[#F3EEEA] border-y border-[#E8DED8]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-2xl font-serif-luxury font-bold text-[#2B2625]">Want to build your own custom gift box?</h3>
+        <p class="text-sm text-[#6B6260] mt-1">Select items across earrings, pendants & clips to get automatic gift packaging and 15% off.</p>
+      </div>
+      <a href="jewellery.html" class="px-6 py-3 bg-[#2B2625] text-white rounded-full text-xs font-semibold hover:bg-black transition flex items-center space-x-2">
+        <span>Go to Collection & Build</span>
+        <i data-lucide="sparkles" class="w-4 h-4 text-[#D4AF37]"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-[#E8DED8] py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <span class="text-2xl font-bold font-serif-luxury text-[#A05C6B]">Lzora.</span>
+        <p class="text-xs text-[#6B6260] mt-3 max-w-sm">Hand-curated aesthetic fashion jewellery combos and delightful gift boxes made affordable for every occasion.</p>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold text-[#2B2625] uppercase tracking-wider mb-4">Quick Navigation</h4>
+        <ul class="space-y-2 text-xs text-[#6B6260]">
+          <li><a href="index.html" class="hover:text-[#A05C6B]">Home / Menu</a></li>
+          <li><a href="jewellery.html" class="hover:text-[#A05C6B]">Jewellery Store (All)</a></li>
+          <li><a href="jewellery.html?cat=earrings" class="hover:text-[#A05C6B]">Earrings Sub-section</a></li>
+          <li><a href="jewellery.html?cat=pendants" class="hover:text-[#A05C6B]">Pendants Sub-section</a></li>
+          <li><a href="jewellery.html?cat=accessories" class="hover:text-[#A05C6B]">Accessories Sub-section</a></li>
+          <li><a href="order.html" class="hover:text-[#A05C6B]">Billing / Order</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold text-[#2B2625] uppercase tracking-wider mb-4">Indian Sourcing Hubs</h4>
+        <p class="text-xs text-gray-500">Sadar Bazar (Delhi) • Burrabazar (Kolkata) • Crawford Market (Mumbai)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

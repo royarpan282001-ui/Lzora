@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craft Your Gift Box | Lzora</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Top Ribbon -->
+  <div class="bg-[#2B2625] text-[#FAF8F5] text-xs py-2 text-center font-medium tracking-wider">
+    🎁 CRAFT YOUR DREAM GIFT BOX • CHOOSE 2 TO 5 PIECES • COMPLIMENTARY LUXURY KEEPSAKE PACKAGING
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8DED8]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <div class="relative flex items-center justify-center">
+          <img src="https://lh3.googleusercontent.com/d/1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW" 
+               alt="Lzora Logo" 
+               class="brand-logo-img transition-transform group-hover:scale-105 duration-300"
+               onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1WKgUZjVsBKatADxZIuYxSaq0j5p8D_0X&sz=w200';">
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl sm:text-3xl font-bold font-serif-luxury text-[#A05C6B] tracking-tight leading-none">Lzora.</span>
+          <span class="text-[9px] tracking-[0.25em] text-[#6B6260] uppercase font-semibold">Jewellery & Gifting</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-[#6B6260]">
+        <a href="index.html" class="hover:text-[#A05C6B] transition">Home</a>
+        
+        <div class="relative group">
+          <a href="jewellery.html" class="hover:text-[#A05C6B] flex items-center space-x-1 py-2 transition">
+            <span>Jewellery Collections</span>
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </a>
+          <!-- Dropdown Sub-menu -->
+          <div class="absolute left-0 top-full hidden group-hover:block w-48 bg-white border border-[#E8DED8] rounded-2xl shadow-xl py-2 z-50">
+            <a href="jewellery.html?cat=earrings" class="block px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FDE8ED] hover:text-[#A05C6B] font-medium">✨ 1. Earrings & Jhumkas</a>
+            <a href="jewellery.html?cat=pendants" class="block px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FDE8ED] hover:text-[#A05C6B] font-medium">✨ 2. Pendants & Chains</a>
+            <a href="jewellery.html?cat=accessories" class="block px-4 py-2.5 text-xs text-gray-700 hover:bg-[#FDE8ED] hover:text-[#A05C6B] font-medium">✨ 3. Cute Accessories</a>
+            <div class="border-t border-gray-100 my-1"></div>
+            <a href="jewellery.html" class="block px-4 py-2 text-xs font-bold text-[#A05C6B]">View All Jewellery →</a>
+          </div>
+        </div>
+
+        <!-- NEW Craft Your Box Page Link -->
+        <a href="craft-box.html" class="px-3.5 py-1.5 rounded-full bg-[#A05C6B]/10 text-[#A05C6B] font-semibold hover:bg-[#A05C6B] hover:text-white transition flex items-center space-x-1.5">
+          <i data-lucide="gift" class="w-4 h-4"></i>
+          <span>Craft Your Box</span>
+        </a>
+
+        <a href="order.html" class="hover:text-[#A05C6B] transition">Billing & Order</a>
+      </nav>
+
+      <!-- Cart Button -->
+      <div class="flex items-center space-x-4">
+        <a href="order.html" class="relative p-2.5 rounded-full bg-white border border-[#E8DED8] text-[#2B2625] hover:border-[#A05C6B] transition shadow-sm">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span class="cart-counter-badge absolute -top-1.5 -right-1.5 bg-[#A05C6B] text-white text-[10px] font-bold w-5 h-5 rounded-full hidden items-center justify-center border-2 border-white">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Craft Your Box Hero -->
+  <section class="bg-[#F8EFE9] border-b border-[#E8DED8] py-10 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="badge-tag mb-2">Curate & Personalize</span>
+      <h1 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-[#2B2625]">Craft Your Custom Gift Box</h1>
+      <p class="text-xs sm:text-sm text-[#6B6260] max-w-xl mx-auto mt-2">
+        Pick your favourite earrings, chains, and aesthetic accessories from the catalogue below. Watch them pack live into your gift box, select your ribbon, and proceed to payment in one click!
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Builder Workspace -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT: Live Interactive Box Display (5 cols) -->
+      <div class="lg:col-span-5 sticky top-28">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-[#E8DED8] shadow-sm">
+          <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+            <div>
+              <span class="text-[11px] font-bold text-[#A05C6B] uppercase tracking-wider">Keepsake Box Preview</span>
+              <h2 class="text-xl font-serif-luxury font-bold text-[#2B2625]">Your Custom Gift Hamper</h2>
+            </div>
+            <button onclick="clearBox()" class="text-xs text-red-500 hover:underline">Clear Box</button>
+          </div>
+
+          <!-- Visual Slots in the Box -->
+          <div class="mt-5 space-y-3" id="box-slots-container">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Customization Extras (Ribbon & Card) -->
+          <div class="mt-6 pt-5 border-t border-gray-100 space-y-4">
+            <div>
+              <label class="text-xs font-semibold text-gray-700 block mb-1.5">Choose Satin Ribbon Wrap</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="setRibbon('Blush Pink')" class="ribbon-btn px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs text-center font-medium hover:border-[#A05C6B] bg-[#FDE8ED] border-[#A05C6B] text-[#A05C6B]">
+                  🎀 Blush Pink
+                </button>
+                <button type="button" onclick="setRibbon('Champagne Gold')" class="ribbon-btn px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs text-center font-medium hover:border-[#A05C6B]">
+                  ✨ Champagne
+                </button>
+                <button type="button" onclick="setRibbon('Emerald Olive')" class="ribbon-btn px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs text-center font-medium hover:border-[#A05C6B]">
+                  🌿 Olive Sage
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs font-semibold text-gray-700 block mb-1">Handwritten Wax-Sealed Note (Free)</label>
+              <input type="text" id="gift-card-message" placeholder="e.g. Happy Birthday Di! Love, Simran" class="w-full px-3.5 py-2 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-[#A05C6B] focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Total Calculation & CTA -->
+          <div class="mt-6 pt-5 border-t border-gray-200">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs text-gray-600">Luxury Packaging & Bedding:</span>
+              <span class="text-xs font-bold text-emerald-600">FREE ₹0</span>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <span class="text-xs text-gray-500 block">Box Subtotal</span>
+                <span id="box-total-price" class="text-2xl font-bold font-serif-luxury text-[#A05C6B]">₹0</span>
+              </div>
+              <span id="box-discount-badge" class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-1 rounded-md hidden">15% Combo Discount Applied!</span>
+            </div>
+
+            <button type="button" onclick="proceedCustomBoxToCheckout()" class="w-full py-3.5 bg-[#A05C6B] hover:bg-[#844855] text-white rounded-2xl font-semibold text-sm shadow-md transition flex items-center justify-center space-x-2">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>Pack Box & Proceed to Payment</span>
+            </button>
+            <p class="text-[10px] text-center text-gray-400 mt-2">Pick minimum 2 items to complete your box.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Product Selection Picker (7 cols) -->
+      <div class="lg:col-span-7">
+        <div class="bg-white p-6 rounded-3xl border border-[#E8DED8] shadow-sm mb-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <h2 class="text-lg font-serif-luxury font-bold text-[#2B2625]">Select Items for Your Box</h2>
+              <p class="text-xs text-gray-500">Click on any item to drop it straight into your gift hamper.</p>
+            </div>
+            
+            <!-- Category Tabs -->
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="filterPicker('all')" id="btn-pick-all" class="px-3 py-1 rounded-full text-xs font-semibold bg-[#A05C6B] text-white">All</button>
+              <button onclick="filterPicker('earrings')" id="btn-pick-earrings" class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Earrings</button>
+              <button onclick="filterPicker('pendants')" id="btn-pick-pendants" class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Pendants</button>
+              <button onclick="filterPicker('accessories')" id="btn-pick-accessories" class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200">Accessories</button>
+            </div>
+          </div>
+
+          <!-- Product Picker Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="picker-grid">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-[#E8DED8] py-8 text-center text-xs text-[#6B6260]">
+    <div class="flex items-center justify-center space-x-2 mb-2">
+      <img src="https://lh3.googleusercontent.com/d/1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW" alt="Lzora Logo" class="w-6 h-6 rounded-full">
+      <span class="font-serif-luxury font-bold text-[#A05C6B]">Lzora Gifting</span>
+    </div>
+    <p>© 2026 Lzora. Custom hampers packed with love, shredded crinkle paper & wax seals.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    let currentFilter = 'all';
+    let selectedBoxItems = [];
+    let selectedRibbon = 'Blush Pink';
+    const MAX_BOX_ITEMS = 5;
+
+    function renderPicker() {
+      const container = document.getElementById('picker-grid');
+      const items = currentFilter === 'all' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === currentFilter);
+
+      container.innerHTML = items.map(p => {
+        const isAdded = selectedBoxItems.some(i => i.id === p.id);
+        return `
+          <div class="flex items-center p-3 rounded-2xl border ${isAdded ? 'border-[#A05C6B] bg-[#FDE8ED]/30' : 'border-gray-200 hover:border-gray-300'} transition">
+            <img src="${p.image}" alt="${p.name}" class="w-16 h-16 rounded-xl object-cover mr-3 flex-shrink-0">
+            <div class="flex-grow min-w-0 pr-2">
+              <span class="text-[10px] uppercase font-bold text-[#A05C6B] tracking-wider block">${p.category}</span>
+              <h4 class="text-xs font-bold text-gray-800 truncate">${p.name}</h4>
+              <div class="flex items-center space-x-2 mt-0.5">
+                <span class="text-xs font-bold text-gray-900">₹${p.price}</span>
+                <span class="text-[10px] text-gray-400 line-through">₹${p.mrp}</span>
+              </div>
+            </div>
+            <div>
+              ${isAdded ? `
+                <button onclick="removeItemFromBox('${p.id}')" class="px-2.5 py-1.5 bg-gray-200 text-gray-700 hover:bg-red-100 hover:text-red-600 rounded-lg text-xs font-semibold flex items-center space-x-1">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                  <span>Remove</span>
+                </button>
+              ` : `
+                <button onclick="addItemToBox('${p.id}')" class="px-3 py-1.5 bg-[#A05C6B] hover:bg-[#844855] text-white rounded-lg text-xs font-semibold flex items-center space-x-1">
+                  <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                  <span>Add</span>
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function renderBoxSlots() {
+      const container = document.getElementById('box-slots-container');
+      
+      let html = '';
+      if (selectedBoxItems.length === 0) {
+        html = `
+          <div class="box-slot p-6 text-center text-gray-400 text-xs">
+            <div>
+              <i data-lucide="package" class="w-8 h-8 mx-auto text-gray-300 mb-1"></i>
+              <p class="font-medium text-gray-500">Your gift box is currently empty</p>
+              <p class="text-[11px] text-gray-400">Click "+ Add" on items to the right to place them inside.</p>
+            </div>
+          </div>
+        `;
+      } else {
+        html = selectedBoxItems.map((item, idx) => `
+          <div class="box-slot filled p-2.5 flex items-center justify-between">
+            <div class="flex items-center space-x-3 min-w-0">
+              <span class="w-6 h-6 rounded-full bg-[#FDE8ED] text-[#A05C6B] text-xs font-bold flex items-center justify-center flex-shrink-0">
+                ${idx + 1}
+              </span>
+              <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover flex-shrink-0" alt="${item.name}">
+              <div class="min-w-0 pr-2">
+                <p class="text-xs font-bold text-gray-800 truncate">${item.name}</p>
+                <p class="text-[10px] text-gray-500">₹${item.price}</p>
+              </div>
+            </div>
+            <button onclick="removeItemFromBox('${item.id}')" class="text-gray-400 hover:text-red-500 p-1">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `).join('');
+
+        if (selectedBoxItems.length < MAX_BOX_ITEMS) {
+          html += `
+            <div class="box-slot p-3 text-center text-gray-400 text-xs">
+              <span>+ Slot ${selectedBoxItems.length + 1} available (up to 5 items)</span>
+            </div>
+          `;
+        }
+      }
+
+      container.innerHTML = html;
+      updateBoxPricing();
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function addItemToBox(id) {
+      if (selectedBoxItems.length >= MAX_BOX_ITEMS) {
+        alert("Your gift box can hold up to 5 curated items. Remove an item or proceed to order!");
+        return;
+      }
+      const item = PRODUCTS.find(p => p.id === id);
+      if (item && !selectedBoxItems.some(i => i.id === id)) {
+        selectedBoxItems.push(item);
+        renderBoxSlots();
+        renderPicker();
+      }
+    }
+
+    function removeItemFromBox(id) {
+      selectedBoxItems = selectedBoxItems.filter(i => i.id !== id);
+      renderBoxSlots();
+      renderPicker();
+    }
+
+    function clearBox() {
+      selectedBoxItems = [];
+      renderBoxSlots();
+      renderPicker();
+    }
+
+    function filterPicker(cat) {
+      currentFilter = cat;
+      const categories = ['all', 'earrings', 'pendants', 'accessories'];
+      categories.forEach(c => {
+        const el = document.getElementById(`btn-pick-${c}`);
+        if (c === cat) {
+          el.className = "px-3 py-1 rounded-full text-xs font-semibold bg-[#A05C6B] text-white";
+        } else {
+          el.className = "px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200";
+        }
+      });
+      renderPicker();
+    }
+
+    function setRibbon(color) {
+      selectedRibbon = color;
+      document.querySelectorAll('.ribbon-btn').forEach(btn => {
+        if (btn.innerText.includes(color)) {
+          btn.className = "ribbon-btn px-2.5 py-1.5 rounded-lg text-xs text-center font-medium bg-[#FDE8ED] border border-[#A05C6B] text-[#A05C6B]";
+        } else {
+          btn.className = "ribbon-btn px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs text-center font-medium hover:border-[#A05C6B]";
+        }
+      });
+    }
+
+    function updateBoxPricing() {
+      let rawTotal = selectedBoxItems.reduce((acc, item) => acc + item.price, 0);
+      let isDiscounted = selectedBoxItems.length >= 3;
+      let finalTotal = isDiscounted ? Math.round(rawTotal * 0.85) : rawTotal;
+
+      document.getElementById('box-total-price').innerText = `₹${finalTotal}`;
+      const badge = document.getElementById('box-discount-badge');
+      if (isDiscounted) {
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function proceedCustomBoxToCheckout() {
+      if (selectedBoxItems.length < 2) {
+        alert("Please add at least 2 items into your gift box before proceeding to payment.");
+        return;
+      }
+
+      let rawTotal = selectedBoxItems.reduce((acc, item) => acc + item.price, 0);
+      let finalTotal = selectedBoxItems.length >= 3 ? Math.round(rawTotal * 0.85) : rawTotal;
+      const cardMsg = document.getElementById('gift-card-message').value.trim();
+
+      // Bundle box into global cart
+      addCustomGiftBoxToCart({
+        boxTitle: `Custom Lzora Gift Box (${selectedBoxItems.length} items)`,
+        totalPrice: finalTotal,
+        items: selectedBoxItems,
+        ribbonColor: selectedRibbon,
+        cardNote: cardMsg
+      });
+
+      // Redirect directly to the billing / order payment page
+      window.location.href = 'order.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPicker();
+      renderBoxSlots();
+    });
+  </script>
+</body>
+</html>

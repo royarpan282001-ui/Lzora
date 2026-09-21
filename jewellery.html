@@ -20,12 +20,10 @@
   <header class="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8DED8]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center space-x-3 group">
-        <div class="relative flex items-center justify-center">
-          <img src="https://lh3.googleusercontent.com/d/1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW" 
-               alt="Lzora Logo" 
-               class="brand-logo-img transition-transform group-hover:scale-105 duration-300"
-               onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW&sz=w200';">
-        </div>
+        <img src="https://lh3.googleusercontent.com/d/1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW" 
+             alt="Lzora Logo" 
+             class="brand-logo-img transition-transform group-hover:scale-105 duration-300"
+             onerror="this.src='https://drive.google.com/thumbnail?id=1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW&sz=w200';">
         <div class="flex flex-col">
           <span class="text-2xl sm:text-3xl font-bold font-serif-luxury text-[#A05C6B] tracking-tight leading-none">Lzora.</span>
           <span class="text-[9px] tracking-[0.25em] text-[#6B6260] uppercase font-semibold">Jewellery & Gifting</span>
@@ -33,10 +31,14 @@
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-[#6B6260]">
-        <a href="index.html" class="hover:text-[#A05C6B]">Home</a>
-        <a href="jewellery.html" class="text-[#A05C6B] font-semibold border-b-2 border-[#A05C6B] pb-1">Jewellery Collections</a>
-        <a href="order.html" class="hover:text-[#A05C6B]">Billing & Order</a>
+      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-[#6B6260]">
+        <a href="index.html" class="hover:text-[#A05C6B] transition">Home</a>
+        <a href="jewellery.html" class="hover:text-[#A05C6B] transition">Jewellery Collections</a>
+        <a href="craft-box.html" class="px-4 py-2 rounded-full bg-[#A05C6B] text-white font-semibold transition flex items-center space-x-1.5">
+          <i data-lucide="gift" class="w-4 h-4"></i>
+          <span>Make Your Gift Box ♡</span>
+        </a>
+        <a href="order.html" class="hover:text-[#A05C6B] transition">Billing & Orders</a>
       </nav>
 
       <!-- Cart Button -->

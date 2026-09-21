@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Make Your Own Gift Box ♡ | Lzora</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF8F5; }
+    .font-serif-luxury { font-family: 'Playfair Display', serif; }
+    .font-handwriting { font-family: 'Caveat', cursive; }
+    .brand-logo-img { height: 44px; width: 44px; object-fit: cover; border-radius: 50%; border: 1.5px solid #E8DED8; }
+    .polaroid-frame { background: white; padding: 10px 10px 22px 10px; box-shadow: 0 10px 25px -5px rgba(160,92,107,0.15); transform: rotate(-1.5deg); transition: all 0.3s ease; border-radius: 6px; }
+    .polaroid-frame:hover { transform: rotate(0deg) scale(1.02); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Top Ribbon -->
+  <div class="bg-[#2B2625] text-[#FAF8F5] text-xs py-2 text-center font-medium tracking-wider">
+    🎁 MAKE YOUR OWN GIFT BOX • ADD 2 TO 10 ITEMS • CUSTOM PHOTO LID • HANDWRITTEN LETTER UNLOCKED ABOVE ₹299 ♡
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8DED8]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-3 group">
+        <img src="https://lh3.googleusercontent.com/d/1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW" 
+             alt="Lzora Logo" 
+             class="brand-logo-img transition-transform group-hover:scale-105 duration-300"
+             onerror="this.src='https://drive.google.com/thumbnail?id=1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW&sz=w200';">
+        <div class="flex flex-col">
+          <span class="text-2xl sm:text-3xl font-bold font-serif-luxury text-[#A05C6B] tracking-tight leading-none">Lzora.</span>
+          <span class="text-[9px] tracking-[0.25em] text-[#6B6260] uppercase font-semibold">Jewellery & Gifting</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-[#6B6260]">
+        <a href="index.html" class="hover:text-[#A05C6B] transition">Home</a>
+        <a href="jewellery.html" class="hover:text-[#A05C6B] transition">Jewellery Collections</a>
+        <a href="craft-box.html" class="px-4 py-2 rounded-full bg-[#A05C6B] text-white font-semibold transition flex items-center space-x-1.5 shadow-sm">
+          <i data-lucide="gift" class="w-4 h-4"></i>
+          <span>Make Your Gift Box ♡</span>
+        </a>
+        <a href="order.html" class="hover:text-[#A05C6B] transition">Billing & Orders</a>
+      </nav>
+
+      <!-- Cart Button -->
+      <div class="flex items-center space-x-4">
+        <a href="order.html" class="relative p-2.5 rounded-full bg-white border border-[#E8DED8] text-[#2B2625] hover:border-[#A05C6B] transition shadow-sm">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span class="cart-counter-badge absolute -top-1.5 -right-1.5 bg-[#A05C6B] text-white text-[10px] font-bold w-5 h-5 rounded-full hidden items-center justify-center border-2 border-white">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="bg-gradient-to-b from-[#F8EFE9] to-[#FAF8F5] border-b border-[#E8DED8] py-10 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="badge-tag mb-2">Curate 2 to 10 Items</span>
+      <h1 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-[#2B2625]">Make Your Own Gift Box ♡</h1>
+      <p class="font-handwriting text-2xl text-[#8E5160] mt-1">“Your memories. Your box. Add from 2 to 10 pieces of cute jewellery & keepsakes. ♡”</p>
+      <p class="text-xs sm:text-sm text-[#6B6260] max-w-xl mx-auto mt-2">
+        Pick your pieces below, preview your box live, personalize your custom photo on the lid, and click Proceed to Payment to review your order!
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Workspace -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+      <!-- LEFT: Live Interactive Gift Box Preview -->
+      <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
+        <div class="bg-white rounded-3xl p-6 border border-[#E8DED8] shadow-sm">
+          
+          <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+            <div>
+              <span class="text-[10px] font-bold text-[#A05C6B] uppercase tracking-wider">Visual Gift Box Preview</span>
+              <h2 class="text-lg font-serif-luxury font-bold text-[#2B2625]">Inside Your Box (<span id="box-item-count">0</span> / 10 items)</h2>
+            </div>
+            <button onclick="clearEntireBox()" class="text-xs text-red-500 hover:underline">Clear All</button>
+          </div>
+
+          <!-- Capacity Indicator Bar -->
+          <div class="mt-3">
+            <div class="flex justify-between text-[11px] font-semibold text-gray-500 mb-1">
+              <span id="capacity-status-text">Select at least 2 items (Min: 2, Max: 10)</span>
+              <span id="capacity-count-text">0 / 10</span>
+            </div>
+            <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+              <div id="capacity-progress-bar" class="bg-[#A05C6B] h-full transition-all duration-300 rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <!-- Custom Photo on Box Lid -->
+          <div class="mt-4 bg-[#FAF4F0] p-4 rounded-2xl border border-[#EAD8CE] text-center">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold text-[#A05C6B] uppercase">Custom Box Lid Photo</span>
+              <span class="text-xs text-emerald-600 font-bold">📷 Free HD Print</span>
+            </div>
+            <div class="polaroid-frame max-w-[190px] mx-auto cursor-pointer" onclick="document.getElementById('custom-photo-file').click()">
+              <img id="lid-preview-img" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" class="w-36 h-28 object-cover rounded mx-auto" alt="Box Photo">
+              <p id="lid-caption-text" class="font-handwriting text-sm text-[#2B2625] text-center mt-1.5 font-bold truncate">Together Always ♡</p>
+            </div>
+            <input type="file" id="custom-photo-file" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
+            <div class="mt-2.5 flex items-center justify-center gap-2">
+              <button onclick="document.getElementById('custom-photo-file').click()" class="px-3 py-1 rounded-full bg-white border border-[#E8DED8] text-xs font-semibold text-[#A05C6B] hover:bg-[#FDE8ED]">Upload Your Picture ♡</button>
+              <input type="text" id="lid-caption-input" oninput="document.getElementById('lid-caption-text').innerText = this.value ? this.value + ' ♡' : 'Custom Box ♡'" placeholder="Caption..." value="Together Always" class="px-2.5 py-1 text-xs border rounded-full w-28">
+            </div>
+          </div>
+
+          <!-- Items in Box Tray -->
+          <div class="mt-4 pt-3 border-t border-gray-100">
+            <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Packed Pieces:</h4>
+            <div id="box-tray-items" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+              <p class="text-center py-4 text-xs text-gray-400">Add 2 to 10 items to your gift box ♡</p>
+            </div>
+          </div>
+
+          <!-- Ribbon Selection -->
+          <div class="mt-4 pt-3 border-t border-gray-100">
+            <label class="text-xs font-semibold text-gray-700 block mb-1.5">Satin Ribbon Wrap (Complimentary)</label>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <button type="button" onclick="selectRibbon('Blush Pink')" class="ribbon-btn p-1.5 rounded-lg border text-center font-medium bg-[#FDE8ED] border-[#A05C6B] text-[#A05C6B]">🎀 Blush Pink</button>
+              <button type="button" onclick="selectRibbon('Champagne Gold')" class="ribbon-btn p-1.5 rounded-lg border text-center font-medium border-gray-200">✨ Champagne</button>
+              <button type="button" onclick="selectRibbon('Olive Sage')" class="ribbon-btn p-1.5 rounded-lg border text-center font-medium border-gray-200">🌿 Olive Sage</button>
+            </div>
+          </div>
+
+          <!-- Handwritten Letter Feature -->
+          <div class="mt-4 pt-3 border-t border-gray-100">
+            <div class="p-3 rounded-2xl bg-[#FAF6F3] border border-[#E8DED8]">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-gray-800" id="letter-title">🔒 ♡ Handwritten Letter</span>
+                <span id="letter-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600">Locked</span>
+              </div>
+              <div class="w-full bg-gray-200 h-1.5 rounded-full mt-2 overflow-hidden">
+                <div id="letter-bar" class="bg-[#A05C6B] h-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+              <p id="letter-hint" class="text-[10px] text-gray-500 mt-1">Available exclusively on orders above ₹299.</p>
+              <textarea id="letter-msg" rows="2" placeholder="Write your letter here... Transcribed on vintage cardstock with gold wax!" class="hidden w-full mt-2 p-2 rounded-xl border text-xs font-handwriting text-base"></textarea>
+            </div>
+          </div>
+
+          <!-- Running Total & Proceed to Payment Button -->
+          <div class="mt-5 pt-4 border-t border-gray-100">
+            <div class="flex items-baseline justify-between mb-3">
+              <div>
+                <span class="text-xs text-gray-500 block">Box Running Total</span>
+                <span id="running-total-val" class="text-2xl font-bold font-serif-luxury text-[#A05C6B]">₹0</span>
+              </div>
+              <span class="text-xs font-semibold text-emerald-600">Keepsake Box: FREE</span>
+            </div>
+
+            <!-- PROCEED TO PAYMENT BUTTON -->
+            <button type="button" onclick="proceedToBillingAndOrders()" class="w-full py-4 bg-[#A05C6B] hover:bg-[#844855] text-white rounded-2xl font-bold text-sm shadow-md transition flex items-center justify-center space-x-2">
+              <i data-lucide="credit-card" class="w-4 h-4"></i>
+              <span>Proceed to Payment (Billing & Orders) ♡</span>
+            </button>
+            <p class="text-[10px] text-center text-gray-400 mt-2">Takes you directly to Billing & Orders to enter delivery details.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Curated Catalog Items -->
+      <div class="lg:col-span-7">
+        <div class="bg-white rounded-3xl p-6 border border-[#E8DED8] shadow-sm mb-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-gray-100">
+            <div>
+              <span class="text-[10px] font-bold text-[#A05C6B] uppercase tracking-wider">Step 1 • Choose Your Pieces</span>
+              <h2 class="text-xl font-serif-luxury font-bold text-[#2B2625]">Add Pieces into Box (2 to 10)</h2>
+            </div>
+            
+            <div class="flex flex-wrap gap-1 text-[10px] font-semibold">
+              <span class="px-2 py-0.5 bg-gray-100 rounded-full">Earrings: ₹59</span>
+              <span class="px-2 py-0.5 bg-gray-100 rounded-full">Chains: ₹35</span>
+              <span class="px-2 py-0.5 bg-gray-100 rounded-full">Bracelets: ₹20</span>
+              <span class="px-2 py-0.5 bg-gray-100 rounded-full">Candles: ₹15</span>
+            </div>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex flex-wrap gap-1.5 mt-4">
+            <button onclick="filterCatalog('all')" id="tab-all" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#A05C6B] text-white">♡ All</button>
+            <button onclick="filterCatalog('Earrings')" id="tab-Earrings" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-[#FDE8ED]">♡ Earrings (₹59)</button>
+            <button onclick="filterCatalog('Chains')" id="tab-Chains" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-[#FDE8ED]">♡ Chains (₹35)</button>
+            <button onclick="filterCatalog('Bracelets')" id="tab-Bracelets" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-[#FDE8ED]">♡ Bracelets (₹20)</button>
+            <button onclick="filterCatalog('Candles')" id="tab-Candles" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-[#FDE8ED]">♡ Scented Candles (₹15)</button>
+            <button onclick="filterCatalog('Add-ons')" id="tab-Add-ons" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-[#FDE8ED]">♡ Add-ons</button>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="products-grid"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-[#E8DED8] py-8 text-center text-xs text-[#6B6260]">
+    <div class="flex items-center justify-center space-x-2 mb-2">
+      <img src="https://lh3.googleusercontent.com/d/1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW" alt="Lzora Logo" class="w-6 h-6 rounded-full">
+      <span class="font-serif-luxury font-bold text-[#A05C6B]">Lzora Luxury Gifting</span>
+    </div>
+    <p>© 2026 Lzora • Direct WhatsApp Support: +91 9051185624</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    const CATALOG = [
+      { id: 'img-0', name: 'Crescent Moon Chandbali Jhumkas', category: 'Earrings', price: 59, img: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80', desc: 'Antique silver finish crescent hoops with floral stud tops and hanging jhumka bells.' },
+      { id: 'img-1', name: 'Floral Sunburst Crystal Jhumkas', category: 'Earrings', price: 59, img: 'https://images.unsplash.com/photo-1596944210900-3445cd1630b5?auto=format&fit=crop&w=600&q=80', desc: 'Intricate oxidised silver sunburst jhumkas with crystals and lattice bells.' },
+      { id: 'img-2', name: 'Celestial Hoop Pearl Drop Earrings', category: 'Earrings', price: 59, img: 'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80', desc: 'Concentric lattice circular hoops with droplet and lustrous hanging pearls.' },
+      { id: 'img-3', name: 'Geometric Rhombus Pearl Drops', category: 'Earrings', price: 59, img: 'https://images.unsplash.com/photo-1629224316810-9d8805b95e76?auto=format&fit=crop&w=600&q=80', desc: 'Diamond-silhouette filigree earrings with central faux pearl and bead fringe.' },
+      { id: 'img-5', name: 'Dainty Solitaire Pearl Stud Duo', category: 'Earrings', price: 59, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80', desc: 'Two pairs of graceful cream pearl studs with faceted sparkling crystal mounts.' },
+      { id: 'img-7', name: 'Dainty Noir Butterfly Pendant Chain', category: 'Chains', price: 35, img: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80', desc: 'Fine silver-toned link cable chain with glossy midnight-black enamel butterfly.' },
+      { id: 'img-6', name: 'Milky Jade Panda Charm Bracelet', category: 'Bracelets', price: 20, img: 'https://images.unsplash.com/photo-1611591475155-42e9fba5ce55?auto=format&fit=crop&w=600&q=80', desc: 'Translucent milky stone beads with gold accents and an enamelled panda charm.' },
+      { id: 'candle-1', name: 'French Vanilla Scented Candle', category: 'Candles', price: 15, img: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=600&q=80', desc: 'Cute pastel soy wax candle infused with gentle vanilla floral essence.' },
+      { id: 'img-4', name: 'Bronze Leopard Silky Scrunchie', category: 'Add-ons', price: 20, img: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80', desc: 'Ultra-soft premium satin scrunchie in rich bronze animal print.' }
+    ];
+
+    let selections = {};
+    let activeFilter = 'all';
+    let chosenRibbon = 'Blush Pink';
+    let uploadedPhotoSrc = null;
+    const MIN_ITEMS = 2;
+    const MAX_ITEMS = 10;
+
+    function renderCatalog() {
+      const grid = document.getElementById('products-grid');
+      const items = activeFilter === 'all' 
+        ? CATALOG 
+        : CATALOG.filter(p => p.category === activeFilter);
+
+      grid.innerHTML = items.map(p => {
+        const qty = selections[p.id] || 0;
+        return `
+          <div class="bg-white p-3.5 rounded-2xl border border-[#E8DED8] hover:border-[#A05C6B] flex flex-col justify-between transition-all">
+            <div>
+              <div class="h-44 rounded-xl overflow-hidden mb-2.5 bg-[#FAF8F5] relative">
+                <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover">
+                <span class="absolute top-2 right-2 px-2.5 py-0.5 bg-[#A05C6B] text-white text-xs font-bold rounded-full shadow">₹${p.price}</span>
+              </div>
+              <span class="text-[10px] uppercase font-bold text-[#A05C6B] tracking-wider">${p.category}</span>
+              <h4 class="text-xs font-bold text-gray-800 line-clamp-1">${p.name}</h4>
+              <p class="text-[11px] text-gray-500 line-clamp-2 mt-0.5">${p.desc}</p>
+            </div>
+            <div class="pt-3 mt-2 border-t border-gray-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-[#A05C6B]">₹${p.price}</span>
+              <div class="flex items-center space-x-1.5">
+                ${qty > 0 ? `
+                  <button onclick="changeQty('${p.id}', -1)" class="w-6 h-6 rounded-full bg-gray-200 text-xs font-bold hover:bg-gray-300">-</button>
+                  <span class="text-xs font-bold w-5 text-center">${qty}</span>
+                  <button onclick="changeQty('${p.id}', 1)" class="w-6 h-6 rounded-full bg-[#A05C6B] text-white text-xs font-bold hover:bg-[#844855]">+</button>
+                ` : `
+                  <button onclick="changeQty('${p.id}', 1)" class="px-3 py-1 bg-[#A05C6B] hover:bg-[#844855] text-white text-xs font-semibold rounded-full shadow-xs">+ Add to Box</button>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function changeQty(id, delta) {
+      let currentTotalItems = Object.values(selections).reduce((a, b) => a + b, 0);
+      if (delta > 0 && currentTotalItems >= MAX_ITEMS) {
+        alert("You have reached the maximum limit of 10 items for a single gift box ♡");
+        return;
+      }
+      const cur = selections[id] || 0;
+      const next = cur + delta;
+      if (next <= 0) delete selections[id];
+      else selections[id] = next;
+      renderCatalog();
+      updateBoxState();
+    }
+
+    function filterCatalog(cat) {
+      activeFilter = cat;
+      const tabs = ['all', 'Earrings', 'Chains', 'Bracelets', 'Candles', 'Add-ons'];
+      tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        if (!el) return;
+        if (t === cat) {
+          el.className = "px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#A05C6B] text-white";
+        } else {
+          el.className = "px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 hover:bg-[#FDE8ED]";
+        }
+      });
+      renderCatalog();
+    }
+
+    function updateBoxState() {
+      let total = 0, count = 0, items = [];
+      for (const [id, qty] of Object.entries(selections)) {
+        const prod = CATALOG.find(p => p.id === id);
+        if (prod && qty > 0) {
+          total += prod.price * qty;
+          count += qty;
+          items.push({ prod, qty });
+        }
+      }
+
+      document.getElementById('running-total-val').innerText = `₹${total}`;
+      document.getElementById('box-item-count').innerText = count;
+      document.getElementById('capacity-count-text').innerText = `${count} / ${MAX_ITEMS}`;
+
+      const pct = Math.min(100, Math.round((count / MAX_ITEMS) * 100));
+      document.getElementById('capacity-progress-bar').style.width = `${pct}%`;
+
+      const capText = document.getElementById('capacity-status-text');
+      if (count < MIN_ITEMS) {
+        capText.innerText = `Please add at least ${MIN_ITEMS - count} more item(s) (Min: 2)`;
+        capText.className = "text-amber-600 font-semibold";
+      } else if (count === MAX_ITEMS) {
+        capText.innerText = "Box is completely full (10 items max)";
+        capText.className = "text-[#A05C6B] font-semibold";
+      } else {
+        capText.innerText = `Great! Box ready (${count} items). You can add up to ${MAX_ITEMS - count} more.`;
+        capText.className = "text-emerald-600 font-semibold";
+      }
+
+      const tray = document.getElementById('box-tray-items');
+      if (items.length === 0) {
+        tray.innerHTML = '<p class="text-center py-4 text-xs text-gray-400">Add 2 to 10 items to your gift box ♡</p>';
+      } else {
+        tray.innerHTML = items.map(i => `
+          <div class="flex items-center justify-between p-2 bg-[#FAF8F5] rounded-xl border border-[#E8DED8] text-xs">
+            <div class="flex items-center space-x-2 truncate">
+              <img src="${i.prod.img}" class="w-8 h-8 rounded-lg object-cover flex-shrink-0">
+              <span class="truncate font-semibold text-gray-800">${i.prod.name} (x${i.qty})</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-[#A05C6B]">₹${i.prod.price * i.qty}</span>
+              <button onclick="changeQty('${i.prod.id}', -1)" class="text-gray-400 hover:text-red-500 font-bold px-1">✕</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      const threshold = 299;
+      const letterPct = Math.min(100, Math.round((total / threshold) * 100));
+      document.getElementById('letter-bar').style.width = `${letterPct}%`;
+
+      if (total >= threshold) {
+        document.getElementById('letter-title').innerText = '💌 ♡ Handwritten Letter UNLOCKED';
+        document.getElementById('letter-badge').innerText = 'Eligible';
+        document.getElementById('letter-badge').className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700';
+        document.getElementById('letter-hint').innerText = '✨ Included Free: Enter your custom note below!';
+        document.getElementById('letter-msg').classList.remove('hidden');
+      } else {
+        document.getElementById('letter-title').innerText = '🔒 ♡ Handwritten Letter';
+        document.getElementById('letter-badge').innerText = 'Locked';
+        document.getElementById('letter-badge').className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-200 text-gray-600';
+        document.getElementById('letter-hint').innerText = `Add ₹${threshold - total} more to unlock complimentary handwritten letter ♡`;
+        document.getElementById('letter-msg').classList.add('hidden');
+      }
+    }
+
+    function clearEntireBox() {
+      selections = {};
+      renderCatalog();
+      updateBoxState();
+    }
+
+    function selectRibbon(r) {
+      chosenRibbon = r;
+      document.querySelectorAll('.ribbon-btn').forEach(btn => {
+        if (btn.innerText.includes(r)) {
+          btn.className = "ribbon-btn p-1.5 rounded-lg border text-center font-medium bg-[#FDE8ED] border-[#A05C6B] text-[#A05C6B]";
+        } else {
+          btn.className = "ribbon-btn p-1.5 rounded-lg border text-center font-medium border-gray-200";
+        }
+      });
+    }
+
+    function handlePhotoUpload(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          uploadedPhotoSrc = evt.target.result;
+          document.getElementById('lid-preview-img').src = uploadedPhotoSrc;
+          showToast('Custom photo added to your box lid!');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // PROCEED TO PAYMENT FUNCTION (Encodes payload to URL to guarantee transfer on file:///)
+    function proceedToBillingAndOrders() {
+      let items = [];
+      let total = 0;
+      let totalCount = 0;
+
+      for (const [id, qty] of Object.entries(selections)) {
+        const prod = CATALOG.find(p => p.id === id);
+        if (prod && qty > 0) {
+          total += prod.price * qty;
+          totalCount += qty;
+          items.push({
+            name: prod.name,
+            price: prod.price,
+            qty: qty,
+            img: prod.img
+          });
+        }
+      }
+
+      if (totalCount < MIN_ITEMS) {
+        alert("Please add at least 2 items into your gift box before proceeding to payment ♡");
+        return;
+      }
+
+      if (totalCount > MAX_ITEMS) {
+        alert("You can add a maximum of 10 items into a single gift box ♡");
+        return;
+      }
+
+      const caption = document.getElementById('lid-caption-input')?.value.trim() || 'Together Always';
+      const letterNote = total >= 299 ? (document.getElementById('letter-msg')?.value.trim() || 'Included with Gold Wax Seal') : null;
+
+      const boxPayload = {
+        name: `Custom Gift Box (${totalCount} pieces)`,
+        price: total,
+        ribbon: chosenRibbon,
+        caption: caption,
+        letter: letterNote,
+        items: items
+      };
+
+      // 1. Save to localStorage as persistent storage
+      localStorage.setItem('LZORA_ACTIVE_BOX', JSON.stringify(boxPayload));
+      localStorage.setItem('LZORA_CART', JSON.stringify([boxPayload]));
+      localStorage.setItem('lzora_cart', JSON.stringify([boxPayload]));
+
+      // 2. Direct transfer via URL parameter
+      const encodedData = encodeURIComponent(JSON.stringify(boxPayload));
+      window.location.href = `order.html?box=${encodedData}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+      updateBoxState();
+    });
+  </script>
+</body>
+</html>

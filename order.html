@@ -63,7 +63,7 @@
     <div class="mb-8">
       <span class="inline-block px-3 py-1 bg-[#A05C6B]/10 text-[#A05C6B] text-xs font-semibold rounded-full uppercase tracking-wider mb-2">Checkout & Dispatch</span>
       <h1 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-[#2B2625]">Billing & Order Confirmation</h1>
-      <p class="text-xs sm:text-sm text-[#6B6260] mt-1">Review your customized gift box, enter your delivery address, and confirm your order directly on WhatsApp.</p>
+      <p class="text-xs sm:text-sm text-[#6B6260] mt-1">Review your selected pieces, enter your delivery address, and confirm directly on WhatsApp.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -108,7 +108,7 @@
               </div>
             </div>
 
-            <!-- Payment Method -->
+            <!-- Payment Options -->
             <div class="pt-4 border-t border-gray-100">
               <label class="text-xs font-semibold text-gray-700 block mb-2">Select Payment Method</label>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -135,7 +135,7 @@
         <div class="grid grid-cols-3 gap-3 text-center">
           <div class="bg-white p-3.5 rounded-2xl border border-[#E8DED8]">
             <span class="text-lg">🎀</span>
-            <p class="text-[11px] font-bold text-gray-800 mt-1">Free Gift Wrapping</p>
+            <p class="text-[11px] font-bold text-gray-800 mt-1">Free Gift Packaging</p>
             <p class="text-[10px] text-gray-400">Pastel box & ribbon</p>
           </div>
           <div class="bg-white p-3.5 rounded-2xl border border-[#E8DED8]">
@@ -160,13 +160,11 @@
               <span class="text-[10px] font-bold text-[#A05C6B] uppercase tracking-wider">Review Items</span>
               <h2 class="text-lg font-serif-luxury font-bold text-[#2B2625]">2. Order Summary</h2>
             </div>
-            <a href="craft-box.html" class="text-xs font-semibold text-[#A05C6B] hover:underline">+ Add More Items</a>
+            <a href="jewellery.html" class="text-xs font-semibold text-[#A05C6B] hover:underline">+ Add More Items</a>
           </div>
 
           <!-- Cart Review List Container -->
-          <div id="cart-review-list" class="py-3 divide-y divide-gray-100 max-h-80 overflow-y-auto space-y-3">
-            <!-- Dynamically rendered by JS -->
-          </div>
+          <div id="cart-review-list" class="py-3 divide-y divide-gray-100 max-h-80 overflow-y-auto space-y-3"></div>
 
           <!-- Price Calculations -->
           <div class="pt-4 border-t border-gray-100 space-y-2 text-xs">
@@ -175,7 +173,7 @@
               <span id="bill-subtotal" class="font-medium text-gray-800">₹0</span>
             </div>
             <div class="flex justify-between text-gray-600">
-              <span>Gift Box Packaging & Ribbon</span>
+              <span>Gift Packaging & Ribbon</span>
               <span class="text-emerald-600 font-semibold">FREE (Special Offer)</span>
             </div>
             <div id="cod-charge-row" class="flex justify-between text-gray-600 hidden">
@@ -207,7 +205,6 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="bg-white border-t border-[#E8DED8] py-8 text-center text-xs text-[#6B6260]">
     <div class="flex items-center justify-center space-x-2 mb-2">
       <img src="https://lh3.googleusercontent.com/d/1c5xMuCZhpVaXYYeY6GBYmkPurwIGnmhW" alt="Lzora Logo" class="brand-logo-img">
@@ -218,27 +215,63 @@
 
   <script src="js/app.js"></script>
   <script>
-    let activeBoxOrder = null;
+    let activeCheckoutPayload = null;
 
     function loadOrderData() {
-      // 1. Read from URL query param (handles local file:/// navigation)
       const urlParams = new URLSearchParams(window.location.search);
       const boxParam = urlParams.get('box');
+      const orderParam = urlParams.get('order');
 
+      // 1. Redirected from craft-box.html (?box=...)
       if (boxParam) {
         try {
-          activeBoxOrder = JSON.parse(decodeURIComponent(boxParam));
-          localStorage.setItem('LZORA_ACTIVE_BOX', JSON.stringify(activeBoxOrder));
+          activeCheckoutPayload = JSON.parse(decodeURIComponent(boxParam));
+          activeCheckoutPayload.isBox = true;
+          localStorage.setItem('LZORA_ACTIVE_CHECKOUT', JSON.stringify(activeCheckoutPayload));
         } catch(e) {
-          console.error("URL decode error:", e);
+          console.error("Box decode error:", e);
+        }
+      } 
+      // 2. Redirected from jewellery.html (?order=...)
+      else if (orderParam) {
+        try {
+          activeCheckoutPayload = JSON.parse(decodeURIComponent(orderParam));
+          activeCheckoutPayload.isBox = false;
+          localStorage.setItem('LZORA_ACTIVE_CHECKOUT', JSON.stringify(activeCheckoutPayload));
+        } catch(e) {
+          console.error("Order decode error:", e);
         }
       }
 
-      // 2. Fallback to localStorage if page was refreshed
-      if (!activeBoxOrder) {
+      // 3. Fallback: check localStorage if page refreshed
+      if (!activeCheckoutPayload) {
         try {
-          const saved = localStorage.getItem('LZORA_ACTIVE_BOX');
-          if (saved) activeBoxOrder = JSON.parse(saved);
+          const saved = localStorage.getItem('LZORA_ACTIVE_CHECKOUT');
+          if (saved) activeCheckoutPayload = JSON.parse(saved);
+        } catch(e) {}
+      }
+
+      // 4. Fallback: check raw cart storage
+      if (!activeCheckoutPayload) {
+        try {
+          const rawCart = localStorage.getItem('LZORA_CART') || localStorage.getItem('lzora_cart');
+          if (rawCart) {
+            const parsed = JSON.parse(rawCart);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              const first = parsed[0];
+              if (first.isBox || first.isCustomBox) {
+                activeCheckoutPayload = first;
+              } else {
+                const sub = parsed.reduce((sum, i) => sum + (i.price * (i.qty || 1)), 0);
+                activeCheckoutPayload = {
+                  isBox: false,
+                  name: `Selected Jewellery Pieces (${parsed.length} items)`,
+                  price: sub,
+                  items: parsed
+                };
+              }
+            }
+          }
         } catch(e) {}
       }
 
@@ -246,8 +279,9 @@
     }
 
     function clearCurrentOrder() {
-      activeBoxOrder = null;
-      localStorage.removeItem('LZORA_ACTIVE_BOX');
+      activeCheckoutPayload = null;
+      localStorage.removeItem('LZORA_ACTIVE_CHECKOUT');
+      localStorage.removeItem('LZORA_JEWELLERY_SELECTIONS');
       localStorage.removeItem('LZORA_CART');
       localStorage.removeItem('lzora_cart');
       renderOrderReview();
@@ -261,13 +295,18 @@
       const codRow = document.getElementById('cod-charge-row');
       if (codRow) codRow.classList.toggle('hidden', !isCod);
 
-      if (!activeBoxOrder || !activeBoxOrder.items || activeBoxOrder.items.length === 0) {
+      if (!activeCheckoutPayload || !activeCheckoutPayload.items || activeCheckoutPayload.items.length === 0) {
         list.innerHTML = `
           <div class="text-center py-8">
-            <p class="text-xs text-gray-400 mb-3">Your gift box bag is empty.</p>
-            <a href="craft-box.html" class="px-5 py-2.5 bg-[#A05C6B] text-white text-xs font-semibold rounded-xl inline-block shadow-sm hover:bg-[#844855] transition">
-              Make Your Gift Box ♡
-            </a>
+            <p class="text-xs text-gray-400 mb-3">Your shopping bag is empty.</p>
+            <div class="flex justify-center gap-2">
+              <a href="jewellery.html" class="px-4 py-2 bg-[#A05C6B] text-white text-xs font-semibold rounded-xl shadow-sm hover:bg-[#844855] transition">
+                Jewellery Collection
+              </a>
+              <a href="craft-box.html" class="px-4 py-2 bg-gray-100 text-gray-700 text-xs font-semibold rounded-xl hover:bg-[#FDE8ED] transition">
+                Make Gift Box ♡
+              </a>
+            </div>
           </div>
         `;
         document.getElementById('bill-subtotal').innerText = '₹0';
@@ -276,11 +315,17 @@
         return;
       }
 
-      // Render items inside the box
-      const itemsListHtml = activeBoxOrder.items.map(item => `
-        <div class="flex items-center justify-between py-1 text-xs">
-          <span class="text-gray-700">• ${item.name} <strong class="text-gray-900">x${item.qty}</strong></span>
-          <span class="font-semibold text-gray-800">₹${item.price * item.qty}</span>
+      // Render every single item line-by-line
+      const itemsListHtml = activeCheckoutPayload.items.map(item => `
+        <div class="flex items-center justify-between py-2 text-xs border-b border-gray-100 last:border-none">
+          <div class="flex items-center space-x-2.5">
+            ${item.img ? `<img src="${item.img}" class="w-10 h-10 rounded-xl object-cover border border-[#E8DED8] flex-shrink-0">` : ''}
+            <div>
+              <p class="text-gray-900 font-bold">${item.name}</p>
+              <span class="text-[11px] text-gray-400">Qty: ${item.qty} × ₹${item.price}</span>
+            </div>
+          </div>
+          <span class="font-bold text-gray-900">₹${item.price * item.qty}</span>
         </div>
       `).join('');
 
@@ -288,25 +333,29 @@
         <div class="pt-2 pb-3">
           <div class="flex justify-between items-start mb-2">
             <div>
-              <span class="px-2 py-0.5 bg-[#FDE8ED] text-[#A05C6B] text-[10px] font-bold rounded-full uppercase">Hamper</span>
-              <h4 class="font-bold text-gray-900 text-sm mt-1">${activeBoxOrder.name}</h4>
+              <span class="px-2.5 py-0.5 bg-[#FDE8ED] text-[#A05C6B] text-[10px] font-bold rounded-full uppercase tracking-wider">
+                ${activeCheckoutPayload.isBox ? 'Custom Gift Box' : 'Jewellery Collection Order'}
+              </span>
+              <h4 class="font-bold text-gray-900 text-sm mt-1.5">${activeCheckoutPayload.name}</h4>
             </div>
-            <button onclick="clearCurrentOrder()" class="text-[11px] text-red-500 hover:underline">Remove</button>
+            <button onclick="clearCurrentOrder()" class="text-[11px] text-red-500 hover:underline">Clear</button>
           </div>
 
-          <div class="pl-2.5 my-2 border-l-2 border-[#A05C6B]/40 space-y-1 bg-[#FAF8F5] p-2 rounded-r-xl">
+          <div class="my-2 border border-[#E8DED8] space-y-1 bg-[#FAF8F5] p-3 rounded-2xl">
             ${itemsListHtml}
           </div>
 
-          <div class="mt-2 text-[11px] text-gray-600 space-y-0.5 pt-2 border-t border-gray-100">
-            <p>🎀 Ribbon: <strong class="text-gray-800">${activeBoxOrder.ribbon}</strong></p>
-            <p>📷 Lid Photo: <strong class="text-gray-800">"${activeBoxOrder.caption}"</strong></p>
-            ${activeBoxOrder.letter ? `<p>💌 Wax Letter: <strong class="text-gray-800">"${activeBoxOrder.letter}"</strong></p>` : ''}
-          </div>
+          ${activeCheckoutPayload.isBox ? `
+            <div class="mt-2 text-[11px] text-gray-600 space-y-0.5 pt-2 border-t border-gray-100">
+              <p>🎀 Ribbon: <strong class="text-gray-800">${activeCheckoutPayload.ribbon}</strong></p>
+              <p>📷 Lid Photo: <strong class="text-gray-800">"${activeCheckoutPayload.caption}"</strong></p>
+              ${activeCheckoutPayload.letter ? `<p>💌 Wax Letter: <strong class="text-gray-800">"${activeCheckoutPayload.letter}"</strong></p>` : ''}
+            </div>
+          ` : ''}
         </div>
       `;
 
-      const subtotal = activeBoxOrder.price;
+      const subtotal = activeCheckoutPayload.price;
       const total = subtotal + codFee;
 
       document.getElementById('bill-subtotal').innerText = `₹${subtotal}`;
@@ -315,9 +364,9 @@
     }
 
     function processFinalOrder() {
-      if (!activeBoxOrder || !activeBoxOrder.items || activeBoxOrder.items.length === 0) {
-        alert('Your gift box is empty! Please create your box first ♡');
-        window.location.href = 'craft-box.html';
+      if (!activeCheckoutPayload || !activeCheckoutPayload.items || activeCheckoutPayload.items.length === 0) {
+        alert('Your bag is empty! Please select jewellery pieces or make a gift box first ♡');
+        window.location.href = 'jewellery.html';
         return;
       }
 
@@ -336,9 +385,8 @@
 
       const isCod = payment.includes('Cash');
       const codFee = isCod ? 40 : 0;
-      const grandTotal = activeBoxOrder.price + codFee;
+      const grandTotal = activeCheckoutPayload.price + codFee;
 
-      // Clean, structured WhatsApp order message
       let msg = `✨ *NEW ORDER - LZORA JEWELLERY & GIFTING* ✨%0A`;
       msg += `----------------------------------------%0A`;
       msg += `👤 *Customer:* ${name}%0A`;
@@ -346,24 +394,26 @@
       msg += `📍 *Delivery Address:* ${address}, ${city} - ${pin}%0A`;
       if (note) msg += `📝 *Occasion / Note:* ${note}%0A`;
       msg += `💳 *Payment Method:* ${payment}%0A%0A`;
-      msg += `🎁 *ORDER ITEMS & BOX CONTENTS:*%0A`;
-      msg += `*${activeBoxOrder.name}* - ₹${activeBoxOrder.price}%0A`;
+      msg += `🎁 *ORDER DETAILS:*%0A`;
+      msg += `*${activeCheckoutPayload.name}* - ₹${activeCheckoutPayload.price}%0A`;
 
-      activeBoxOrder.items.forEach(i => {
+      activeCheckoutPayload.items.forEach(i => {
         msg += `   • ${i.name} (Qty: ${i.qty}) - ₹${i.price * i.qty}%0A`;
       });
 
-      msg += `   🎀 Ribbon: ${activeBoxOrder.ribbon}%0A`;
-      msg += `   📷 Photo Lid: "${activeBoxOrder.caption}"%0A`;
-      if (activeBoxOrder.letter) msg += `   💌 Wax Letter: "${activeBoxOrder.letter}"%0A`;
+      if (activeCheckoutPayload.isBox) {
+        msg += `   🎀 Ribbon: ${activeCheckoutPayload.ribbon}%0A`;
+        msg += `   📷 Photo Lid: "${activeCheckoutPayload.caption}"%0A`;
+        if (activeCheckoutPayload.letter) msg += `   💌 Wax Letter: "${activeCheckoutPayload.letter}"%0A`;
+      }
 
       msg += `%0A----------------------------------------%0A`;
-      msg += `Items Subtotal: ₹${activeBoxOrder.price}%0A`;
-      msg += `Packaging & Gift Wrap: FREE (Special Offer)%0A`;
+      msg += `Items Subtotal: ₹${activeCheckoutPayload.price}%0A`;
+      msg += `Packaging: FREE (Special Offer)%0A`;
       if (codFee > 0) msg += `COD Handling Fee: ₹${codFee}%0A`;
       msg += `Shipping: FREE%0A`;
       msg += `*Total Payable: ₹${grandTotal}*%0A%0A`;
-      msg += `Please verify this order and send the payment link/UPI QR! ♡`;
+      msg += `Please verify this order and send UPI QR / payment confirmation! ♡`;
 
       window.open(`https://wa.me/919051185624?text=${msg}`, '_blank');
     }

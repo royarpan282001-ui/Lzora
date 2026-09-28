@@ -8,12 +8,17 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF8F5; }
+    .font-serif-luxury { font-family: 'Playfair Display', serif; }
+    .brand-logo-img { height: 44px; width: 44px; object-fit: cover; border-radius: 50%; border: 1.5px solid #E8DED8; }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between pb-24">
 
-  <!-- Top Ribbon -->
+  <!-- Top Announcement Ribbon -->
   <div class="bg-[#2B2625] text-[#FAF8F5] text-xs py-2 text-center font-medium tracking-wider">
-    ✨ EXPLORE CURATED JEWELLERY • BUILD COMBOS & GET 15% COMBO OFF ✨
+    ✨ EXPLORE CURATED JEWELLERY • FREE SHIPPING OVER ₹499 • WHATSAPP: +91 9051185624 ✨
   </div>
 
   <!-- Navigation Header -->
@@ -33,19 +38,19 @@
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-[#6B6260]">
         <a href="index.html" class="hover:text-[#A05C6B] transition">Home</a>
-        <a href="jewellery.html" class="hover:text-[#A05C6B] transition">Jewellery Collections</a>
-        <a href="craft-box.html" class="px-4 py-2 rounded-full bg-[#A05C6B] text-white font-semibold transition flex items-center space-x-1.5">
+        <a href="jewellery.html" class="text-[#A05C6B] font-semibold border-b-2 border-[#A05C6B] pb-1">Jewellery Collections</a>
+        <a href="craft-box.html" class="px-4 py-2 rounded-full bg-[#A05C6B]/10 text-[#A05C6B] font-semibold hover:bg-[#A05C6B] hover:text-white transition flex items-center space-x-1.5">
           <i data-lucide="gift" class="w-4 h-4"></i>
           <span>Make Your Gift Box ♡</span>
         </a>
-        <a href="order.html" class="hover:text-[#A05C6B] transition">Billing & Orders</a>
+        <a href="javascript:void(0)" onclick="goToCheckout()" class="hover:text-[#A05C6B] transition">Billing & Orders</a>
       </nav>
 
       <!-- Cart Button -->
       <div class="flex items-center space-x-4">
-        <a href="order.html" class="relative p-2.5 rounded-full bg-white border border-[#E8DED8] text-[#2B2625] hover:border-[#A05C6B] transition shadow-sm">
+        <a href="javascript:void(0)" onclick="goToCheckout()" class="relative p-2.5 rounded-full bg-white border border-[#E8DED8] text-[#2B2625] hover:border-[#A05C6B] transition shadow-sm">
           <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-          <span class="cart-counter-badge absolute -top-1.5 -right-1.5 bg-[#A05C6B] text-white text-[10px] font-bold w-5 h-5 rounded-full hidden items-center justify-center border-2 border-white">0</span>
+          <span id="cart-counter" class="cart-counter-badge absolute -top-1.5 -right-1.5 bg-[#A05C6B] text-white text-[10px] font-bold w-5 h-5 rounded-full hidden items-center justify-center border-2 border-white">0</span>
         </a>
       </div>
     </div>
@@ -53,13 +58,13 @@
 
   <!-- Page Header -->
   <section class="bg-[#F8EFE9] border-b border-[#E8DED8] py-12 px-4 text-center">
-    <span class="badge-tag mb-2">Jewellery Studio</span>
+    <span class="inline-block px-3 py-1 bg-[#A05C6B]/10 text-[#A05C6B] text-xs font-semibold rounded-full uppercase tracking-wider mb-2">Jewellery Studio</span>
     <h1 class="text-3xl sm:text-4xl font-serif-luxury font-bold text-[#2B2625]">Jewellery & Accessories Collection</h1>
     <p class="text-xs sm:text-sm text-[#6B6260] max-w-xl mx-auto mt-2">
-      Filter through our three specialized sub-sections: Earrings, Pendants/Chains, and Cute Hair & Wrist Accessories.
+      Filter through our specialized sub-sections: Earrings, Pendants/Chains, and Cute Accessories. Add pieces to your bag and proceed to billing directly.
     </p>
 
-    <!-- Sub-section Switcher Tabs -->
+    <!-- Category Filters -->
     <div class="flex flex-wrap justify-center gap-2 mt-8">
       <button onclick="filterCategory('all')" id="tab-all" class="px-5 py-2.5 rounded-full text-xs font-semibold bg-[#A05C6B] text-white transition shadow-sm">
         All Items
@@ -78,19 +83,43 @@
 
   <!-- Main Catalog Grid -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
-    <div id="catalog-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Injected by JavaScript -->
-    </div>
+    <div id="catalog-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
   </main>
+
+  <!-- Floating Sticky Checkout Bar (Triggers when items are added) -->
+  <div id="floating-checkout-bar" class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-[#E8DED8] py-4 px-6 shadow-2xl transition-transform duration-300 translate-y-full">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div>
+        <span class="text-xs text-gray-500 block">Shopping Bag Total</span>
+        <div class="flex items-center space-x-2">
+          <span id="floating-total" class="text-xl font-serif-luxury font-bold text-[#A05C6B]">₹0</span>
+          <span id="floating-count" class="text-xs text-gray-500">(0 items)</span>
+        </div>
+      </div>
+      <button onclick="goToCheckout()" class="px-8 py-3.5 bg-[#A05C6B] hover:bg-[#844855] text-white text-xs font-bold rounded-2xl shadow-lg transition flex items-center space-x-2">
+        <span>Proceed to Billing & Orders →</span>
+      </button>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="bg-white border-t border-[#E8DED8] py-8 text-center text-xs text-[#6B6260]">
-    <p>© 2026 Lzora Curations. All jewellery is nickel-free & gift-boxed ready.</p>
+    <p>© 2026 Lzora Curations • WhatsApp: +91 9051185624</p>
   </footer>
 
   <script src="js/app.js"></script>
   <script>
     let activeFilter = 'all';
+    let bagItems = {}; // { id: qty }
+
+    // Initialize cart from URL or storage
+    function initBag() {
+      try {
+        const raw = localStorage.getItem('LZORA_ITEMS_BAG');
+        if (raw) bagItems = JSON.parse(raw);
+      } catch(e) {}
+      updateCartBadge();
+    }
 
     function renderCatalog() {
       const container = document.getElementById('catalog-container');
@@ -98,33 +127,83 @@
         ? PRODUCTS 
         : PRODUCTS.filter(p => p.category === activeFilter);
 
-      container.innerHTML = items.map(p => `
-        <div class="product-card bg-white rounded-2xl border border-[#E8DED8] p-4 flex flex-col justify-between">
-          <div>
-            <div class="relative h-48 rounded-xl overflow-hidden mb-3 bg-[#FAF8F5]">
-              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
-              <span class="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-[#A05C6B] text-[10px] font-bold px-2 py-0.5 rounded-md">
-                ${p.tag}
-              </span>
-            </div>
-            <div class="text-[10px] uppercase font-bold text-[#A05C6B] tracking-wider mb-1">${p.category}</div>
-            <h3 class="font-serif-luxury font-bold text-base text-[#2B2625] line-clamp-1">${p.name}</h3>
-            <p class="text-xs text-[#6B6260] mt-1 line-clamp-2">${p.desc}</p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
+      container.innerHTML = items.map(p => {
+        const qty = bagItems[p.id] || 0;
+        return `
+          <div class="product-card bg-white rounded-2xl border border-[#E8DED8] p-4 flex flex-col justify-between">
             <div>
-              <span class="text-base font-bold text-[#2B2625]">₹${p.price}</span>
-              <span class="text-xs text-gray-400 line-through ml-1">₹${p.mrp}</span>
+              <div class="relative h-48 rounded-xl overflow-hidden mb-3 bg-[#FAF8F5]">
+                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                <span class="absolute top-2 left-2 bg-white/90 backdrop-blur-sm text-[#A05C6B] text-[10px] font-bold px-2 py-0.5 rounded-md">
+                  ${p.tag}
+                </span>
+              </div>
+              <div class="text-[10px] uppercase font-bold text-[#A05C6B] tracking-wider mb-1">${p.category}</div>
+              <h3 class="font-serif-luxury font-bold text-base text-[#2B2625] line-clamp-1">${p.name}</h3>
+              <p class="text-xs text-[#6B6260] mt-1 line-clamp-2">${p.desc}</p>
             </div>
-            <button onclick="addToCart('${p.id}')" class="px-3.5 py-1.5 bg-[#A05C6B] hover:bg-[#844855] text-white text-xs font-semibold rounded-lg transition flex items-center space-x-1">
-              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-              <span>Add</span>
-            </button>
+            <div class="pt-4 mt-4 border-t border-gray-100 flex items-center justify-between">
+              <div>
+                <span class="text-base font-bold text-[#2B2625]">₹${p.price}</span>
+                <span class="text-xs text-gray-400 line-through ml-1">₹${p.mrp}</span>
+              </div>
+              <div>
+                ${qty > 0 ? `
+                  <div class="flex items-center space-x-2">
+                    <button onclick="changeBagQty('${p.id}', -1)" class="w-7 h-7 rounded-lg bg-gray-100 text-xs font-bold hover:bg-gray-200">-</button>
+                    <span class="text-xs font-bold w-5 text-center">${qty}</span>
+                    <button onclick="changeBagQty('${p.id}', 1)" class="w-7 h-7 rounded-lg bg-[#A05C6B] text-white text-xs font-bold hover:bg-[#844855]">+</button>
+                  </div>
+                ` : `
+                  <button onclick="changeBagQty('${p.id}', 1)" class="px-4 py-2 bg-[#A05C6B] hover:bg-[#844855] text-white text-xs font-semibold rounded-xl shadow-xs transition flex items-center space-x-1">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                    <span>Add</span>
+                  </button>
+                `}
+              </div>
+            </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
       if (window.lucide) window.lucide.createIcons();
+    }
+
+    function changeBagQty(id, delta) {
+      const cur = bagItems[id] || 0;
+      const next = cur + delta;
+      if (next <= 0) delete bagItems[id];
+      else bagItems[id] = next;
+
+      localStorage.setItem('LZORA_ITEMS_BAG', JSON.stringify(bagItems));
+      renderCatalog();
+      updateCartBadge();
+    }
+
+    function updateCartBadge() {
+      const totalCount = Object.values(bagItems).reduce((a, b) => a + b, 0);
+      let totalPrice = 0;
+      for (const [id, qty] of Object.entries(bagItems)) {
+        const prod = PRODUCTS.find(p => p.id === id);
+        if (prod) totalPrice += prod.price * qty;
+      }
+
+      const badge = document.getElementById('cart-counter');
+      if (badge) {
+        badge.innerText = totalCount;
+        badge.style.display = totalCount > 0 ? 'flex' : 'none';
+      }
+
+      const bar = document.getElementById('floating-checkout-bar');
+      if (bar) {
+        if (totalCount > 0) {
+          bar.classList.remove('translate-y-full');
+          document.getElementById('floating-total').innerText = '₹' + totalPrice;
+          document.getElementById('floating-count').innerText = `(${totalCount} item${totalCount > 1 ? 's' : ''})`;
+        } else {
+          bar.classList.add('translate-y-full');
+        }
+      }
     }
 
     function filterCategory(cat) {
@@ -141,15 +220,44 @@
       renderCatalog();
     }
 
-    // Auto-select tab if URL query param exists (e.g. ?cat=earrings)
-    window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const catParam = urlParams.get('cat');
-      if (catParam && ['earrings', 'pendants', 'accessories'].includes(catParam)) {
-        filterCategory(catParam);
-      } else {
-        renderCatalog();
+    // Direct redirection to billing with URL payload
+    function goToCheckout() {
+      const itemsList = [];
+      let total = 0;
+      for (const [id, qty] of Object.entries(bagItems)) {
+        const prod = PRODUCTS.find(p => p.id === id);
+        if (prod && qty > 0) {
+          total += prod.price * qty;
+          itemsList.push({
+            name: prod.name,
+            price: prod.price,
+            qty: qty,
+            img: prod.image,
+            category: prod.category
+          });
+        }
       }
+
+      if (itemsList.length === 0) {
+        alert("Your shopping bag is empty! Please add some jewellery pieces first ♡");
+        return;
+      }
+
+      const orderPayload = {
+        type: 'jewellery',
+        name: `Jewellery Collection Order (${itemsList.length} items)`,
+        price: total,
+        items: itemsList
+      };
+
+      localStorage.setItem('LZORA_ACTIVE_ORDER', JSON.stringify(orderPayload));
+      const encoded = encodeURIComponent(JSON.stringify(orderPayload));
+      window.location.href = `order.html?order=${encoded}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initBag();
+      renderCatalog();
     });
   </script>
 </body>
